@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetMouseButton(0))
         {
-            touchXDelta = Input.GetAxis("Mouse X");
+            touchXDelta = Input.GetAxis("Mouse X") * 0.1f;
         }
         newX = transform.position.x + xSpeed * touchXDelta * Time.deltaTime;
         newX = Mathf.Clamp(newX, -limitx, limitx);
