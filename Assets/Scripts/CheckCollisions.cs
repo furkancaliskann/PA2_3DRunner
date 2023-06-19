@@ -19,9 +19,28 @@ public class CheckCollisions : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Obstacle"))
+        {
+            Debug.Log("GAME OVER!");
+
+            Clear();
+
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            transform.position = new Vector3(0, 0.279f, -11.15f);
+        }
+    }
+
     public void AddCoin()
     {
         score++;
+        CoinText.text = "Score: " + score.ToString();
+    }
+
+    void Clear()
+    {
+        score = 0;
         CoinText.text = "Score: " + score.ToString();
     }
 }
